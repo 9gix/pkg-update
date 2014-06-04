@@ -9,7 +9,6 @@ import urllib2
 import urlparse
 import logging
 from subprocess import call, Popen, PIPE
-from helper import sh
 
 ############
 # LOG FILE #
