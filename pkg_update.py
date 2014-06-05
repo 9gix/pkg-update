@@ -38,8 +38,8 @@ def sh(cmd):
 ###############
 if len(sys.argv) < 2 or len(sys.argv) > 3:
     sys.stderr.write("Error: Invalid Arguments\n" +
-        "Usage: pre-update.py <repo> [PROJECT-HOME]\n" +
-        "E.g. : pre-update.py my-repo /home/user/Workspace\n")
+        "Usage: pkg_update.py <repo> [PROJECT-HOME]\n" +
+        "E.g. : pkg_update.py my-repo /home/user/Workspace\n")
     sys.exit(1)
 
 try:
@@ -108,6 +108,9 @@ def pre_update():
 
     logging.info("Recreating {branch} branch".format(branch=TEMPORARY_BRANCH))
     sh("git checkout -B {branch}".format(branch=TEMPORARY_BRANCH))
+
+    logging.info("Installing new package when required")
+    sh("bundle install")
 
     logging.info("Updating Package")
     sh("bundle update")
